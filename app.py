@@ -1,6 +1,4 @@
-# To add a new cell, type '# %%'
-# To add a new markdown cell, type '# %% [markdown]'
-# %%
+
 '''
 啟動伺服器樣板
 '''
@@ -29,7 +27,7 @@ def callback():
     return "OK"
 
 
-# %%
+
 from linebot.models import TextSendMessage,ImageSendMessage,MessageEvent,TextMessage
 # 消息製作
 reply_message_list = [
@@ -38,7 +36,7 @@ ImageSendMessage(original_content_url='https://{}/warning.png'.format(server_url
 ]
 
 
-# %%
+
 from linebot.models.events import FollowEvent
 import requests
 
@@ -62,7 +60,6 @@ def reply_user_and_get_user_id(event):
     )
 
 
-# %%
 if __name__ =='__main__':
     app.run(host='0.0.0.0')
 

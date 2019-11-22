@@ -1,0 +1,23 @@
+{
+    "size": {
+      "width": 2500,
+      "height": 1686
+    },
+    "selected": true,
+    "name": "圖文選單 1",
+    "chatBarText": "遊戲開始....",
+    "areas": [
+      {
+        "bounds": {
+          "x": 0,
+          "y": 5,
+          "width": 2492,
+          "height": 1681
+        },
+        "action": {
+          "type": "message",
+          "text": "gamestart"
+        }
+      }
+    ]
+  }

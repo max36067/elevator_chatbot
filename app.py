@@ -35,7 +35,7 @@ def callback():
 from linebot.models import TextSendMessage,ImageSendMessage,MessageEvent,TextMessage
 # 消息製作
 reply_message_list = [
-ImageSendMessage(original_content_url='https://{}/warning.png'.format(server_url)),
+# ImageSendMessage(original_content_url='https://{}/warning.png'.format(server_url)),
     TextSendMessage(text='本遊戲含有恐怖及克蘇魯神話成分，請斟酌遊玩')
 ]
 
@@ -56,7 +56,7 @@ def reply_user_and_get_user_id(event):
     # 綁定圖文選單
     LineRichMenuMainID = secret_file.get('rich_menu_id')
     linkResult = line_bot_api.link_rich_menu_to_user(secret_file["self_user_id"],LineRichMenuMainID)
-
+    print("in Follow link")
     # 關注回應
     line_bot_api.reply_message(
         event.reply_token,

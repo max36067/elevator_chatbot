@@ -6,8 +6,11 @@ from flask import Flask,request,abort
 from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 import json
+import os 
 
-secret_file = json.load(open('line_bot_secret_key.json','r'))
+f = os.getcwd()
+d = open("{}/{}".format(f,'line_bot_secret_key.json'), 'r', encoding="big5")
+secret_file = json.load(d)
 server_url = secret_file.get('server_url')
 app = Flask(__name__,static_url_path='/image_trpg_elevator',static_folder='../image_trpg_elevator/')
 
@@ -60,8 +63,7 @@ def reply_user_and_get_user_id(event):
 
 
 
-import os
 if __name__ =='__main__':
     port = int(os.environ.get("PORT",5000))
     app.run(host='0.0.0.0', port=port)
-
+    # pass

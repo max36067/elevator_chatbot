@@ -48,10 +48,10 @@ import requests
 @handler.add(FollowEvent)
 def reply_user_and_get_user_id(event):
     print("in Follow")
-    user_profile = line_bot_api.get_profile(event.source.user_id)
-    with open('users_profile.txt','a') as us_file:
-        us_file.write(json.dumps(vars(user_profile),sort_keys=True))
-        us_file.write('\r\n')
+    # user_profile = line_bot_api.get_profile(event.source.user_id)
+    # with open('users_profile.txt','a') as us_file:
+    #     us_file.write(json.dumps(vars(user_profile),sort_keys=True))
+    #     us_file.write('\r\n')
 
     # 綁定圖文選單
     LineRichMenuMainID = secret_file.get('rich_menu_id')

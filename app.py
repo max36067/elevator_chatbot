@@ -57,12 +57,13 @@ def reply_user_and_get_user_id(event):
     # 綁定圖文選單
     # LineRichMenuMainID = secret_file.get('rich_menu_id')
     # linkResult = line_bot_api.link_rich_menu_to_user(secret_file["self_user_id"],LineRichMenuMainID)
-    print("in follow id")
+    
     # 關注回應
     line_bot_api.reply_message(
         event.reply_token,
         reply_message_list
     )
+    print("in follow id")
 
 
 

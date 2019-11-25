@@ -7,7 +7,7 @@ from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 import json
 
-secret_file = json.load(open('line_bot_secret_key.json','r'))
+secret_file = json.load(open('line_bot_Trpg\\line_bot_secret_key.json','r'))
 server_url = secret_file.get('server_url')
 app = Flask(__name__,static_url_path='/image_trpg_elevator',static_folder='../image_trpg_elevator/')
 
@@ -16,8 +16,7 @@ handler = WebhookHandler(secret_file.get('secret_key'))
 
 @app.route('/',methods = ['POST'])
 def callback():
-    signature = request.headers['X-LINE-SIGNATURE']
-    print(signature)
+    signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
     app.logger.info('Request body:' + body)
 
@@ -45,7 +44,7 @@ import requests
 @handler.add(FollowEvent)
 def reply_user_and_get_user_id(event):
     user_profile = line_bot_api.get_profile(event.source.user_id)
-    with open('../users_profile.txt','a') as us_file:
+    with open('line_bot_Trpg\\users_profile.txt','a') as us_file:
         us_file.write(json.dumps(vars(user_profile),sort_keys=True))
         us_file.write('\r\n')
 

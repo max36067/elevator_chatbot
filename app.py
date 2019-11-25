@@ -16,7 +16,7 @@ handler = WebhookHandler(secret_file.get('secret_key'))
 
 @app.route('/',methods = ['POST'])
 def callback():
-    signature = request.headers['X-Link-Signature']
+    signature = request.headers['HTTP_X_LINE_SIGNATURE']
     body = request.get_data(as_text=True)
     app.logger.info('Request body:' + body)
 

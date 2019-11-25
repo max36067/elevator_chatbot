@@ -9,7 +9,7 @@ import json
 import os 
 
 f = os.getcwd()
-d = open("{}/{}".format(f,'line_bot_secret_key.json'), 'r', encoding="big5")
+d = open("{}/{}".format(f, 'line_bot_secret_key.json'), 'r', encoding="big5")
 secret_file = json.load(d)
 server_url = secret_file.get('server_url')
 app = Flask(__name__,static_url_path='/image_trpg_elevator',static_folder='../image_trpg_elevator/')
@@ -22,6 +22,7 @@ def callback():
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
     app.logger.info('Request body:' + body)
+    print("in")
 
     try:
         handler.handle(body,signature)
@@ -46,6 +47,7 @@ import requests
 
 @handler.add(FollowEvent)
 def reply_user_and_get_user_id(event):
+    print("in Follow")
     user_profile = line_bot_api.get_profile(event.source.user_id)
     with open('users_profile.txt','a') as us_file:
         us_file.write(json.dumps(vars(user_profile),sort_keys=True))

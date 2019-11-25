@@ -35,7 +35,7 @@ def callback():
 from linebot.models import TextSendMessage,ImageSendMessage,MessageEvent,TextMessage
 # 消息製作
 reply_message_list = [
-# ImageSendMessage(original_content_url='https://{}/warning.png'.format(server_url)),
+ImageSendMessage(original_content_url='https://{}/warning.png'.format(server_url)),
     TextSendMessage(text='本遊戲含有恐怖及克蘇魯神話成分，請斟酌遊玩')
 ]
 

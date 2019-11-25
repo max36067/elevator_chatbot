@@ -7,7 +7,7 @@ from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 import json
 
-secret_file = json.load(open('line_bot_secret_key.json','r'))
+secret_file = json.load(open('line_bot_Trpg\line_bot_secret_key.json','r'))
 server_url = secret_file.get('server_url')
 app = Flask(__name__,static_url_path='/image_trpg_elevator',static_folder='../image_trpg_elevator/')
 
@@ -16,7 +16,8 @@ handler = WebhookHandler(secret_file.get('secret_key'))
 
 @app.route('/',methods = ['POST'])
 def callback():
-    signature = request.headers['HTTP_X_LINE_SIGNATURE']
+    signature = request.headers['X-LINE-SIGNATURE']
+    print(signature)
     body = request.get_data(as_text=True)
     app.logger.info('Request body:' + body)
 

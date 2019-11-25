@@ -36,7 +36,6 @@ ImageSendMessage(original_content_url='https://{}/warning.png'.format(server_url
 ]
 
 
-
 from linebot.models.events import FollowEvent
 import requests
 
@@ -60,8 +59,8 @@ def reply_user_and_get_user_id(event):
     )
 
 
+
+import os
 if __name__ =='__main__':
-    import os
-    port = int(os.environ.get(“PORT”, 5000))
-    app.run(host='0.0.0.0',port=port)
+    app.run(host='0.0.0.0',os.environ['PORT'])
 

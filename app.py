@@ -35,8 +35,9 @@ def callback():
 
 from linebot.models import TextSendMessage,ImageSendMessage,MessageEvent,TextMessage
 # 消息製作
+image = 'https://imgur.com/HsqGhhT.jpg'
 reply_message_list = [
-ImageSendMessage(original_content_url='https://imgur.com/HsqGhhT.jpg'),
+ImageSendMessage(original_content_url=image,preview_image_url=image),
     TextSendMessage(text='本遊戲含有恐怖及克蘇魯神話成分，請斟酌遊玩')
 ]
 
@@ -68,7 +69,7 @@ def reply_user_and_get_user_id(event):
 
 
 if __name__ =='__main__':
-    # am.run()
+    am.run()
     port = int(os.environ.get("PORT",5000))
     app.run(host='0.0.0.0', port=port)
     

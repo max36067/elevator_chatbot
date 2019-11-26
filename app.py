@@ -38,7 +38,7 @@ from linebot.models import (
     TextSendMessage,ImageSendMessage,
     MessageEvent,TextMessage,
     QuickReply, QuickReplyButton,
-    PostbackAction
+    PostbackAction,PostbackEvent
 )
 # 消息製作
 image = 'https://imgur.com/HsqGhhT.jpg'
@@ -88,7 +88,7 @@ def handler_message(event):
                 QuickReplyButton(
                 action=PostbackAction(
                     label="了解了!",
-                    data="capital_1"
+                    data="text=capital_1"
                     )
                 )
             ]
@@ -103,18 +103,41 @@ def handler_message(event):
         )
         # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
         # 之後再把這行打開
-        # start_dict = {"0": "今天是禮拜天。\n探索者(你)因為某些理由，來到了一家大百貨公司。\n準備要往上的你，正好一個電梯到來了、你們就順勢靠了過去。\n叮～電梯開門了。\n各位請搭乘^^",
-        # "1": "等大家都進了電梯，門便緩緩的關閉。\n你按下了想去的樓層。\n\n順帶一提，總共一到十樓，一到六樓是電器賣場、七到八樓是餐廳、九到十樓是停車場。",
-        # "2": "按下了按鈕，電梯就緩緩上升。\n但是，不知道為什麼電梯沒有停在你按下的樓層，而是在四樓亮起的時候停了下來；所有的樓層燈都熄了下去。\n接著，不知道為什麼二樓的樓層燈自己亮了起來。\n沒打算停下、沒打開門、自己點亮的樓層燈。"
-        # }
-        # for i in range(3):
-        #     line_bot_api.reply_message(
-        #         event.reply_token,
-        #         TextSendMessage(text=start_dict[str(i)])
-        #         )
-        #     time.sleep(2)
 
-        
+    else:
+        # result_message_array = []
+        # continue_= "script/{}.json".format(event.message)
+        # result_message_array = detect_json(continue_)
+        pass
+
+
+    # start_dict = {"0": "今天是禮拜天。\n探索者(你)因為某些理由，來到了一家大百貨公司。\n準備要往上的你，正好一個電梯到來了、你們就順勢靠了過去。\n叮～電梯開門了。\n各位請搭乘^^",
+    # "1": "等大家都進了電梯，門便緩緩的關閉。\n你按下了想去的樓層。\n\n順帶一提，總共一到十樓，一到六樓是電器賣場、七到八樓是餐廳、九到十樓是停車場。",
+    # "2": "按下了按鈕，電梯就緩緩上升。\n但是，不知道為什麼電梯沒有停在你按下的樓層，而是在四樓亮起的時候停了下來；所有的樓層燈都熄了下去。\n接著，不知道為什麼二樓的樓層燈自己亮了起來。\n沒打算停下、沒打開門、自己點亮的樓層燈。"
+    # }
+    # for i in range(3):
+    #     line_bot_api.reply_message(
+    #         event.reply_token,
+    #         TextSendMessage(text=start_dict[str(i)])
+    #         )
+    #     time.sleep(2)
+
+
+from urllib.parse import parse_qs
+
+@handler.add(PostbackEvent)
+def process_postback_event(event):
+    query_postback_dict = parse_qs(event.postback.data)
+    print(query_postback_dict)
+    if 'menu' in query_postback_dict:
+        # TODO:在main_rich_menu裡面做出幾個圖文選單並綁定
+        pass
+
+    elif 'text' in query_postback_dict:
+        text_message_loc = "script/{}.json".format(query_postback_dict)
+        text_message_array = detect_json(text_message_loc)
+        character.line_reply(text_message_array)
+
         
 
 if __name__ =='__main__':

@@ -9,7 +9,7 @@
           "type": "postback",
           "label": "是",
           "text": "是",
-          "data": "run()"
+          "data": "gamestart"
         },
         {
           "type": "message",

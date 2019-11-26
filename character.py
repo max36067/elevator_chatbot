@@ -12,7 +12,8 @@ from random import randint
 import time
 
 
-def character():
+
+def create_character_SAN():
     san = (randint(1,6)+randint(1,6)+randint(1,6))*5
     a = {'san':san}
     b = json.dumps(a)
@@ -61,5 +62,10 @@ def dice_():
             
         ]
         return go_to_bad_end_list
-        
+
+def line_reply(TextReply):
+    line_bot_api.reply_message(
+            event.reply_token,
+            TextReply
+        )        
         

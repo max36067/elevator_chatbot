@@ -92,7 +92,7 @@ def handler_message(event):
             TextSendMessage(text="",quick_reply=QuickReplyButton(action=PostbackAction(
                 label="了解了!",
                 data="capital_1"
-            )))]
+            ))]
         )
         # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
         # 之後再把這行打開

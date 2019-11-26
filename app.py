@@ -84,15 +84,16 @@ def handler_message(event):
         ca = open('cb/ability.json','r')
         cb = json.load(ca)
         sanA = cb.get('san')
+        con_QRB = []
         line_bot_api.reply_message(
             event.reply_token,
             [TextSendMessage(text="您的SAN值為{}，請努力不要讓SAN值歸零喔!".format(sanA)),
             TextSendMessage(text="遊戲開始..."),
-            TextSendMessage(text="友情提示:本遊戲中有許多以骰子作檢定的動作\nSAN值都是以100面骰作檢定，若大於自身SAN值則做扣除SAN值判定，若小於自身SAN值則視情況做判定。"),
-            TextSendMessage(text="",quick_reply=QuickReplyButton(action=PostbackAction(
+            TextSendMessage(text="友情提示:本遊戲中有許多以骰子作檢定的動作\nSAN值都是以100面骰作檢定，若大於自身SAN值則做扣除SAN值判定，若小於自身SAN值則視情況做判定。",
+            quick_reply=QuickReplyButton(action=PostbackAction(
                 label="了解了!",
                 data="capital_1"
-            ))]
+            ))))]
         )
         # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
         # 之後再把這行打開

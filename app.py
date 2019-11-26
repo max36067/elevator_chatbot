@@ -84,11 +84,6 @@ def handler_message(event):
             TextSendMessage(text="您的SAN值為{}，請努力不要讓SAN值歸零喔!".format(sanA)),
             TextSendMessage(text="遊戲開始...")
         )
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="您的SAN值為{}，請努力不要讓SAN值歸零喔!".format(sanA)),
-            TextSendMessage(text="遊戲開始...")
-        )
         # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
         # 之後再把這行打開
         # start_dict = {"0": "今天是禮拜天。\n探索者(你)因為某些理由，來到了一家大百貨公司。\n準備要往上的你，正好一個電梯到來了、你們就順勢靠了過去。\n叮～電梯開門了。\n各位請搭乘^^",

@@ -90,6 +90,7 @@ def handler_message(event):
             )
             print("a2")
             time.sleep(1)
+            print("a3")
         
         
 

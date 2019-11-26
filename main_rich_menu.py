@@ -12,10 +12,8 @@ def run():
     menujson = json.load(open('rich_menu_main.json','r',encoding='utf-8'))
 
     lineRichmenu = line_bot_api.create_rich_menu(rich_menu=RichMenu.new_from_json_dict(menujson))
-    print(lineRichmenu)
 
     uploadImageFile = open('image_trpg_elevator/cosulu.png','rb')
     line_bot_api.set_rich_menu_image(lineRichmenu,'image/png',uploadImageFile)
 
     linkResult = line_bot_api.link_rich_menu_to_user(secretfile['self_user_id'],lineRichmenu)
-    print(linkResult)

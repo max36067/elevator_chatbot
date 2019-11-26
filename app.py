@@ -8,6 +8,8 @@ from linebot.exceptions import InvalidSignatureError
 import json
 import os 
 import main_rich_menu as am
+import time
+from json_ import detect_json
 
 f = os.getcwd()
 d = open("{}/{}".format(f, 'line_bot_secret_key.json'), 'r', encoding="big5")
@@ -37,7 +39,7 @@ from linebot.models import TextSendMessage,ImageSendMessage,MessageEvent,TextMes
 image = 'https://imgur.com/HsqGhhT.jpg'
 reply_message_list = [
 ImageSendMessage(original_content_url=image,preview_image_url=image),
-    TextSendMessage(text='本遊戲含有恐怖及克蘇魯神話成分，請斟酌遊玩')
+    TextSendMessage(text='本遊戲含有恐怖及克蘇魯神話成分，請斟酌遊玩。請點擊下方圖片以開始遊戲')
 ]
 
 
@@ -62,6 +64,11 @@ def reply_user_and_get_user_id(event):
         reply_message_list
     )
 
+'''
+san值小於0要gameover
+'''
+
+
 import character
 # 幫玩家設定SAN值
 @handler.add(MessageEvent,message = TextMessage)
@@ -73,10 +80,18 @@ def handler_message(event):
         sanA = cb.get('san')
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text = "您的SAN值為{}，請努力不要讓SAN值歸零唷!".format(sanA)
+            [TextSendMessage(text = "您的SAN值為{}，請努力不要讓SAN值歸零唷!".format(sanA)),
+            TextSendMessage(text= "遊戲開始....")]
+        )
+        # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
+        # 之後再把這行打開
+        time.sleep(2)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=character.start_script()
             )
         )
-        line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
+        
 
 if __name__ =='__main__':
     port = int(os.environ.get("PORT",5000))

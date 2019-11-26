@@ -88,7 +88,7 @@ def handler_message(event):
         time.sleep(2)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=[character.start_script()]
+            character.start_script()
             )
         )
         

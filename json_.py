@@ -22,7 +22,6 @@ def detect_json(fileName):
 
         # 讀取其用來判斷的元件
         message_type = jsonObject.get('type')
-        
         # 轉換
         if message_type == 'text':
             returnArray.append(TextSendMessage.new_from_json_dict(jsonObject))

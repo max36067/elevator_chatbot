@@ -56,5 +56,5 @@ def start_script():
         #         TextSendMessage(text=start_dict[str(i)])
         #         )
         #     time.sleep(2)
-
+    pass
 start_script()

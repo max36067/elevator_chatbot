@@ -32,7 +32,7 @@ def lowsan():
     # 如果san值歸零，提示玩家遊戲結束，是否重新開始遊玩 
     elif sancheck <= 0:
         gameover_list = [TextSendMessage(text= "SAN值歸零....遊戲結束。"),
-        TemplateSendMessage(detect_json(restart_place))
+        detect_json(restart_place)
         ]
         return gameover_list
     f.close()

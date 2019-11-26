@@ -17,5 +17,4 @@ def character():
         f.write(b)
 
     
-
 character()

@@ -66,6 +66,7 @@ import character
 # 幫玩家設定SAN值
 @handler.add(MessageEvent,message = TextMessage)
 def handler_message(event):
+    print('b')
     if event.text.message == 'gamestart':
         character.character()
         print('a')

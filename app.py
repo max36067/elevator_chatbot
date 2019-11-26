@@ -49,7 +49,6 @@ import requests
 
 @handler.add(FollowEvent)
 def reply_user_and_get_user_id(event):
-    print("in Follow")
     user_profile = line_bot_api.get_profile(event.source.user_id)
     with open('users_profile.txt','a') as us_file:
         us_file.write(json.dumps(vars(user_profile),sort_keys=True))
@@ -64,6 +63,22 @@ def reply_user_and_get_user_id(event):
         reply_message_list
     )
     print("in follow id")
+
+import character
+# 幫玩家設定SAN值
+@handler.add(MessageEvent,message=TextMessage)
+def handler_message(event):
+    if event.text.message.find == 'gamestart':
+        character.character()
+        ca = open('cb/ability.json','r')
+        cb = json.load(ca)
+        sanA = cb.get('san')
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text = "您的SAN值為{}，請努力不要讓SAN值歸零唷!".format(sanA)
+        )
+    
+            
 
 
 

@@ -68,9 +68,13 @@ import character
 def handler_message(event):
     if event.text.message.find == 'gamestart':
         character.character()
+        print('a')
         ca = open('cb/ability.json','r')
+        print('a')
         cb = json.load(ca)
+        print('a')
         sanA = cb.get('san')
+        print('a')
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text = "您的SAN值為{}，請努力不要讓SAN值歸零唷!".format(sanA)

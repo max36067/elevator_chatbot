@@ -64,7 +64,7 @@ def reply_user_and_get_user_id(event):
 
 import character
 # 幫玩家設定SAN值
-@handler.add(MessageEvent,text = TextMessage)
+@handler.add(MessageEvent,message = TextMessage)
 def handler_message(event):
     if event.text.message == 'gamestart':
         character.character()

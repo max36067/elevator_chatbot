@@ -40,6 +40,7 @@ def lowsan():
 def start_script():
     start_game = "script/start_script.json"
     start_check_json = detect_json(start_game)
+    start_check_json_list = []
     for i in start_check_json:
-        [",".join(i)]
         time.sleep(2)
+        start_check_json_list.append(i)

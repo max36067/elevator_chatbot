@@ -85,7 +85,6 @@ def handler_message(event):
         )
         # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
         # 之後再把這行打開
-        time.sleep(2)
         line_bot_api.reply_message(
             event.reply_token,
             character.start_script()

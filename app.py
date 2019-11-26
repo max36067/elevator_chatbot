@@ -66,22 +66,17 @@ import character
 # 幫玩家設定SAN值
 @handler.add(MessageEvent,message = TextMessage)
 def handler_message(event):
-    print('b')
     if event.message.text == 'gamestart':
         character.character()
-        print('a1')
         ca = open('cb/ability.json','r')
-        print('a2')
         cb = json.load(ca)
-        print('a3')
         sanA = cb.get('san')
-        print('a4')
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text = "您的SAN值為{}，請努力不要讓SAN值歸零唷!".format(sanA)
             )
         )
-
+        line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
 
 if __name__ =='__main__':
     port = int(os.environ.get("PORT",5000))

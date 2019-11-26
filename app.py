@@ -62,7 +62,6 @@ def reply_user_and_get_user_id(event):
         event.reply_token,
         reply_message_list
     )
-    print("in follow id")
 
 import character
 # 幫玩家設定SAN值

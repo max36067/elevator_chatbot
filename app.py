@@ -94,6 +94,7 @@ def handler_message(event):
                 event.reply_token,
                 TextSendMessage(text=start_dict[str(i)])
                 )
+            time.sleep(2)
         
 
 if __name__ =='__main__':

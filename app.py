@@ -85,7 +85,7 @@ def handler_message(event):
         }
         for i in range(2):
             line_bot_api.reply_message(
-                event.reply_token,
+                reply_token,
                 TextSendMessage(text=dict_of_str[str(i)])
             )
             print("a2")

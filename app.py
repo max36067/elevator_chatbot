@@ -90,7 +90,6 @@ def handler_message(event):
             event.reply_token,
             character.start_script()
             )
-        )
         
 
 if __name__ =='__main__':

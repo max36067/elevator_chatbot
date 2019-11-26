@@ -83,11 +83,14 @@ def handler_message(event):
         "0": "您的SAN值為{}，請努力不要讓SAN值歸零喔!".format(sanA),
         "1": "遊戲開始..."
         }
+        print('a0')
         for i in range(2):
+            prin('a1')
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=dict_of_str[i])
             )
+            print("a2")
             time.sleep(1)
         
         

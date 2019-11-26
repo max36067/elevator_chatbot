@@ -41,7 +41,7 @@ ImageSendMessage(original_content_url=image,preview_image_url=image),
 ]
 
 
-from linebot.models.events import FollowEvent,MessageEvent
+from linebot.models.events import FollowEvent
 import requests
 
 # 這裡是在做發消息及取個資的動作
@@ -64,9 +64,9 @@ def reply_user_and_get_user_id(event):
 
 import character
 # 幫玩家設定SAN值
-@handler.add(MessageEvent,message=TextMessage)
+@handler.add(MessageEvent,text = TextMessage)
 def handler_message(event):
-    if event.text.message.find == 'gamestart':
+    if event.text.message == 'gamestart':
         character.character()
         print('a')
         ca = open('cb/ability.json','r')

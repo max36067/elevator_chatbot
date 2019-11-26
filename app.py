@@ -85,10 +85,15 @@ def handler_message(event):
         )
         # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
         # 之後再把這行打開
-        line_bot_api.reply_message(
-            event.reply_token,
-            character.start_script()
-            )
+        start_dict = {"0":"今天是禮拜天。\n探索者(你)因為某些理由，來到了一家大百貨公司。\n準備要往上的你，正好一個電梯到來了、你們就順勢靠了過去。\n叮～電梯開門了。\n各位請搭乘^^"
+                    "1":"等大家都進了電梯，門便緩緩的關閉。\n你按下了想去的樓層。\n\n順帶一提，總共一到十樓，一到六樓是電器賣場、七到八樓是餐廳、九到十樓是停車場。"
+                    "2": "按下了按鈕，電梯就緩緩上升。\n但是，不知道為什麼電梯沒有停在你按下的樓層，而是在四樓亮起的時候停了下來；所有的樓層燈都熄了下去。\n接著，不知道為什麼二樓的樓層燈自己亮了起來。\n沒打算停下、沒打開門、自己點亮的樓層燈。"
+                }
+        for i in range(3):
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=start_dict[str(i)])
+                )
         
 
 if __name__ =='__main__':

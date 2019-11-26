@@ -41,4 +41,5 @@ def start_script():
     start_game = "script/start_script.json"
     start_check_json = detect_json(start_game)
     for i in start_check_json:
+        [",".join(i)]
         time.sleep(2)

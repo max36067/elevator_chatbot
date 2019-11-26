@@ -76,13 +76,10 @@ def handler_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text = "您的SAN值為{}，請努力不要讓SAN值歸零唷!".format(sanA)
+            )
         )
-    
-            
-
 
 
 if __name__ =='__main__':
     port = int(os.environ.get("PORT",5000))
     app.run(host='0.0.0.0', port=port)
-    

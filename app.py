@@ -23,7 +23,6 @@ def callback():
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
     app.logger.info('Request body:' + body)
-    print("in")
 
     try:
         handler.handle(body,signature)
@@ -42,7 +41,7 @@ ImageSendMessage(original_content_url=image,preview_image_url=image),
 ]
 
 
-from linebot.models.events import FollowEvent
+from linebot.models.events import FollowEvent,MessageEvent
 import requests
 
 # 這裡是在做發消息及取個資的動作

@@ -79,7 +79,7 @@ def handler_message(event):
         cb = json.load(ca)
         sanA = cb.get('san')
         dict_of_str = {
-        "0": "您的SAN值為{}，請努力不要讓SAN值歸零喔!".format(san),
+        "0": "您的SAN值為{}，請努力不要讓SAN值歸零喔!".format(sanA),
         "1": "遊戲開始..."
         }
         for i in range(2):

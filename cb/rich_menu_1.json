@@ -1,0 +1,89 @@
+{
+    "size": {
+      "width": 2500,
+      "height": 1686
+    },
+    "selected": false,
+    "name": "圖文選單 2",
+    "chatBarText": "調查...",
+    "areas": [
+      {
+        "bounds": {
+          "x": 0,
+          "y": 8,
+          "width": 866,
+          "height": 791
+        },
+        "action": {
+          "type": "postback",
+          "text": "調查電梯操作盤",
+          "data": "menu=rich_menu_7"
+        }
+      },
+      {
+        "bounds": {
+          "x": 883,
+          "y": 8,
+          "width": 900,
+          "height": 800
+        },
+        "action": {
+          "type": "postback",
+          "text": "調查樓層指引",
+          "data": "text=check_02"
+        }
+      },
+      {
+        "bounds": {
+          "x": 1809,
+          "y": 25,
+          "width": 664,
+          "height": 799
+        },
+        "action": {
+          "type": "postback",
+          "text": "調查緊急出口",
+          "data": "text=check_03"
+        }
+      },
+      {
+        "bounds": {
+          "x": 0,
+          "y": 837,
+          "width": 837,
+          "height": 841
+        },
+        "action": {
+          "type": "postback",
+          "text": "調查廣告",
+          "data": "text=check_04"
+        }
+      },
+      {
+        "bounds": {
+          "x": 900,
+          "y": 854,
+          "width": 883,
+          "height": 820
+        },
+        "action": {
+          "type": "postback",
+          "text": "調查壁紙",
+          "data": "text=check_05"
+        }
+      },
+      {
+        "bounds": {
+          "x": 1809,
+          "y": 866,
+          "width": 672,
+          "height": 808
+        },
+        "action": {
+          "type": "postback",
+          "text": "調查電梯防災箱",
+          "data": "text=check_06"
+        }
+      }
+    ]
+  }

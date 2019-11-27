@@ -1,0 +1,12 @@
+[
+    {
+        "type": "text",
+        "text": "按下了緊急呼叫按鈕，從對講機傳來了沙沙聲..."
+      },
+    {
+        "type": "audio",
+        "originalContentUrl": "https://taira-komori.jpn.org/sample_noise/tutu4.mp3",
+        "duration": 3000
+      }
+
+]

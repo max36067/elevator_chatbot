@@ -1,0 +1,18 @@
+[
+    {
+        "type": "text",
+        "text": "你環顧了四周，發現了電梯的幾樣東西，分別是:\n電梯操控盤\n樓層指引\n緊急出口\n牆上的廣告\n電梯的壁紙\n防災箱\n看起來都是可以調查的對象。",
+        "quickReply": {
+            "items": [
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "你可以開始行動了>",
+                        "data": "menu=rich_menu_1"
+                    }
+                }
+            ]
+        }
+    }
+]

@@ -10,15 +10,17 @@ from json_ import detect_json
 from linebot.models import TextSendMessage,MessageEvent,TemplateSendMessage
 from random import randint
 import time
+import main_rich_menu as mrm
+import os
 
 
-
-def create_character_SAN():
+def character():
+    os.remove('cb/ability.json')
     san = (randint(1,6)+randint(1,6)+randint(1,6))*5
     a = {'san':san}
-    b = json.dumps(a)
     with open('cb/ability.json','w') as f:
-        f.write(b)
+        json.dump(a,f)
+    
 
 # sancheck模組，主要用來偵測san值是否歸零
 def lowsan():
@@ -63,9 +65,29 @@ def dice_():
         ]
         return go_to_bad_end_list
 
-def line_reply(TextReply):
-    line_bot_api.reply_message(
-            event.reply_token,
-            TextReply
-        )        
-        
+
+def count(count_times):
+    # 四
+    if count_times >= 7:
+        pass
+    # 二
+    elif count_times >= 11:
+        pass
+    # 六
+    elif count_times >= 15:
+        pass
+    # 二
+    elif count_times >= 19:
+        pass
+    # 十
+    elif count_times >= 23:
+        pass
+    # 五
+    elif count_times >= 27:
+        pass
+    # 一
+    elif count_times >= 31:
+        pass
+    # 十
+    elif count_times >= 35:
+        pass

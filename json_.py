@@ -11,7 +11,6 @@ from linebot.models.template import (
 from linebot.models.template import *
 
 def detect_json(fileName):
-    
     #開啟檔案，轉成json
     with open(fileName,encoding = 'utf-8') as f:
         jsonArray = json.load(f)
@@ -40,7 +39,7 @@ def detect_json(fileName):
         elif message_type == 'flex':
             returnArray.append(FlexSendMessage.new_from_json_dict(jsonObject))  
         elif message_type == 'video':
-            returnArray.append(FlexSendMessage.new_from_json_dict(jsonObject))    
+            returnArray.append(FlexSendMessage.new_from_json_dict(jsonObject))   
 
 
     # 回傳

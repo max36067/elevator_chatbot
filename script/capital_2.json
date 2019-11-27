@@ -1,0 +1,18 @@
+[
+    {
+        "type": "text",
+        "text": "進了電梯以後，門便緩緩的關閉。\n你按下了想去的樓層，電梯緩緩的上升中....。\n\n順帶一提，這間百貨公司總共一到十樓，一到六樓是電器賣場、七到八樓是餐廳、九到十樓是停車場。",
+        "quickReply": {
+            "items": [
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "next>",
+                        "data": "text=capital_3"
+                    }
+                }
+            ]
+        }
+    }
+]

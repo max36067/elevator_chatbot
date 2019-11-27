@@ -7,7 +7,7 @@ from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 import json
 import os 
-import main_rich_menu as am
+import main_rich_menu as mrm
 import time
 from json_ import detect_json
 
@@ -19,6 +19,7 @@ app = Flask(__name__,static_url_path='/image_trpg_elevator',static_folder='../im
 
 line_bot_api = LineBotApi(secret_file.get("channel_access_token"))
 handler = WebhookHandler(secret_file.get('secret_key'))
+count = 0
 
 @app.route('/',methods = ['POST'])
 def callback():
@@ -61,7 +62,7 @@ def reply_user_and_get_user_id(event):
         us_file.write('\r\n')
 
     # 綁定圖文選單
-    am.run()
+    mrm.run()
 
     # 關注回應
     line_bot_api.reply_message(
@@ -79,6 +80,7 @@ import character
 # 幫玩家設定SAN值
 @handler.add(MessageEvent,message = TextMessage)
 def handler_message(event):
+    global count
     if event.message.text == 'gamestart':
         character.character()
         ca = open('cb/ability.json','r')
@@ -104,23 +106,17 @@ def handler_message(event):
         # line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
         # 之後再把這行打開
 
+
+        # TODO: 完成擲骰子的動作，順便考慮如何讓1D20之類的參數傳回去
+
+
     else:
-        # result_message_array = []
-        # continue_= "script/{}.json".format(event.message)
-        # result_message_array = detect_json(continue_)
+        # TODO: 完成電梯內各種操作，考慮一下要使用圖文選單還是quickreply
+        # 若是要做圖文選單可以做到下面
+        count += 1
+        character.count(count)
         pass
 
-
-    # start_dict = {"0": "今天是禮拜天。\n探索者(你)因為某些理由，來到了一家大百貨公司。\n準備要往上的你，正好一個電梯到來了、你們就順勢靠了過去。\n叮～電梯開門了。\n各位請搭乘^^",
-    # "1": "等大家都進了電梯，門便緩緩的關閉。\n你按下了想去的樓層。\n\n順帶一提，總共一到十樓，一到六樓是電器賣場、七到八樓是餐廳、九到十樓是停車場。",
-    # "2": "按下了按鈕，電梯就緩緩上升。\n但是，不知道為什麼電梯沒有停在你按下的樓層，而是在四樓亮起的時候停了下來；所有的樓層燈都熄了下去。\n接著，不知道為什麼二樓的樓層燈自己亮了起來。\n沒打算停下、沒打開門、自己點亮的樓層燈。"
-    # }
-    # for i in range(3):
-    #     line_bot_api.reply_message(
-    #         event.reply_token,
-    #         TextSendMessage(text=start_dict[str(i)])
-    #         )
-    #     time.sleep(2)
 
 
 from urllib.parse import parse_qs
@@ -129,14 +125,48 @@ from urllib.parse import parse_qs
 def process_postback_event(event):
     query_postback_dict = parse_qs(event.postback.data)
     print(query_postback_dict)
+    global count
     if 'menu' in query_postback_dict:
         # TODO:在main_rich_menu裡面做出幾個圖文選單並綁定
-        pass
+        menu_message_local = query_postback_dict.get('menu')[0]
+        mrm.any_rich_menu(menu_message_local)
+        count += 1
+        character.count(count)
+
 
     elif 'text' in query_postback_dict:
-        text_message_loc = "script/{}.json".format(query_postback_dict)
-        text_message_array = detect_json(text_message_loc)
-        character.line_reply(text_message_array)
+        text_message_local = "script/{}.json".format(query_postback_dict.get('text')[0])
+        print(text_message_local)
+        text_message_array = detect_json(text_message_local)
+        print(text_message_array)
+        line_bot_api.reply_message(
+            event.reply_token,
+            text_message_array
+        )
+        print('check01')
+        count += 1
+        character.count(count)
+    
+
+    elif 'sign' in query_postback_dict:
+        sign_name = {'sign_name':'true'}
+        sign_in = json.load(open('cb/ability.json'))
+        if type(sign_in) is dict:
+            sign_in = [sign_in]
+        sign_in.append(sign_name)
+        with open('cb/ability.json','w') as sign_in_name:
+            json.dump(sign_in,sign_in_name)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="在廣告上寫下了名字...")
+        )
+        count += 1
+        character.count(count)
+        
+        
+    # 有必要再開下面那段
+    # elif 'unlink_rich_menu' in query_postback_dict:
+    #     line_bot_api.unlink_rich_menu_from_user(secret_file['self_user_id'])
 
         
 

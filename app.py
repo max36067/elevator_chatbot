@@ -126,7 +126,6 @@ from urllib.parse import parse_qs
 @handler.add(PostbackEvent)
 def process_postback_event(event):
     query_postback_dict = parse_qs(event.postback.data)
-    print(query_postback_dict)
     global count
     if 'menu' in query_postback_dict:
         # 在main_rich_menu裡面做出幾個圖文選單並綁定
@@ -145,7 +144,6 @@ def process_postback_event(event):
             text_message_array
         )
         count += 1
-        print(count)
         character.count(count)
     
 

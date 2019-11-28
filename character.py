@@ -59,26 +59,26 @@ def dice_():
 
 def count(count_times):
     # 四
-    if count_times >= 7:
+    if count_times == 7:
         pass
     # 二
-    elif count_times >= 11:
+    elif count_times == 11:
         pass
     # 六
-    elif count_times >= 15:
+    elif count_times == 15:
         pass
     # 二
-    elif count_times >= 19:
+    elif count_times == 19:
         pass
     # 十
-    elif count_times >= 23:
+    elif count_times == 23:
         pass
     # 五
-    elif count_times >= 27:
+    elif count_times == 27:
         pass
     # 一
-    elif count_times >= 31:
+    elif count_times == 31:
         pass
     # 十
-    elif count_times >= 35:
+    elif count_times == 35:
         pass

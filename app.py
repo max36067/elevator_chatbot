@@ -174,8 +174,8 @@ def process_postback_event(event):
             unlink_message_array
         )
 
-    elif 'dice' in query_postback_dict:
-        unlink_message_local = "script/{}.json".format(query_postback_dict.get('unlink')[0])
+    # elif 'dice' in query_postback_dict:
+    #     unlink_message_local = "script/{}.json".format(query_postback_dict.get('unlink')[0])
         
 
 

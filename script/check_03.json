@@ -1,0 +1,26 @@
+[
+    {
+        "type": "text",
+        "text": "你在電梯頂端發現了逃生出口，逃生出口的門似乎是可以打開的，請問你要打開逃生出口嗎?",
+        "quickReply": {
+            "items": [
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "打開逃生出口",
+                        "data": "unlink=open_exit"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "message",
+                        "label": "還是算了",
+                        "text": "還是去調查其他東西看看吧..."
+                    }
+                }
+            ]
+        }
+    }
+]

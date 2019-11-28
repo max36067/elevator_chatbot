@@ -62,7 +62,9 @@ def reply_user_and_get_user_id(event):
         us_file.write('\r\n')
 
     # 綁定圖文選單
-    mrm.run()
+
+    linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_main/rich_menu_id", 'r').read()
+    line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)
 
     # 關注回應
     line_bot_api.reply_message(
@@ -129,21 +131,19 @@ def process_postback_event(event):
     if 'menu' in query_postback_dict:
         # TODO:在main_rich_menu裡面做出幾個圖文選單並綁定
         menu_message_local = query_postback_dict.get('menu')[0]
-        mrm.any_rich_menu(menu_message_local)
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/{}/rich_menu_id".format(menu_message_local), 'r').read()
+        line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)
         count += 1
         character.count(count)
 
 
     elif 'text' in query_postback_dict:
         text_message_local = "script/{}.json".format(query_postback_dict.get('text')[0])
-        print(text_message_local)
         text_message_array = detect_json(text_message_local)
-        print(text_message_array)
         line_bot_api.reply_message(
             event.reply_token,
             text_message_array
         )
-        print('check01')
         count += 1
         character.count(count)
     

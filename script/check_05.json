@@ -1,0 +1,27 @@
+[
+    {
+    "type": "text",
+    "text": "漂亮的壁紙，左上角似乎有些破損...",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "撕開壁紙試試看",
+                    "data": "text=take_off_1"
+                    }
+                },
+                {
+                "type": "action",
+                "action": {
+                    "type": "message",
+                    "label": "還是不要撕開吧...",
+                    "text": "回去看看其他東西"
+                    }
+                }
+            ]
+        }
+    }
+
+]

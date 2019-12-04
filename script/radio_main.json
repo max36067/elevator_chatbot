@@ -1,0 +1,26 @@
+[{
+    "type": "text",
+    "text": "一個小型收音機",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "觀察",
+                    "data": "text=radio_01"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "打開收音機",
+                        "data": "text=radio_02"
+                    }
+                }
+            ]
+        }
+    }
+
+]

@@ -1,0 +1,19 @@
+[
+    {
+    "type": "text",
+    "text": "撕開壁紙之後，發現壁紙後有個鑰匙孔，看起來是需要鑰匙。",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "把鑰匙插入",
+                    "data": "wallpaper=key_open_01"
+                    }
+                }
+            ]
+        }
+    }
+
+]

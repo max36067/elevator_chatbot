@@ -1,0 +1,18 @@
+[{
+    "type": "text",
+    "text": "電梯防災箱，裡面有一些必需品",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "打開電梯防災箱",
+                    "data": "menu=rich_menu_8"
+                    }
+                }
+            ]
+        }
+    }
+
+]

@@ -1,0 +1,26 @@
+
+[{
+    "type": "text",
+    "text": "在精神受到衝擊後，發現眼前的怪物似乎碰不到這台電梯，要嘗試攻擊這個怪物嗎?",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "攻擊",
+                    "data": "end=bad_end_1"
+                    }
+                },
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "還是回電梯內找尋其他逃脫方法吧",
+                    "data": "menu=rich_menu_1"
+                    }
+                }
+            ]
+        }
+    }
+]

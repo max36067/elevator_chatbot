@@ -1,0 +1,26 @@
+[{
+    "type": "text",
+    "text": "小型簡易廁所",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "觀察",
+                    "data": "text=toilet_01"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "上廁所",
+                        "data": "text=toilet_02"
+                        }
+                    }
+            ]
+        }
+    }
+
+]

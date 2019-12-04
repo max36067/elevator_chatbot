@@ -1,0 +1,27 @@
+[
+    {
+    "type": "text",
+    "text": "看起來是個哨子",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "觀察",
+                    "data": "text=whistle_01"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "吹哨子",
+                        "data": "text=whistle_02"
+                        }
+                }
+            ]
+        }
+    }
+
+]

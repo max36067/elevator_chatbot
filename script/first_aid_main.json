@@ -1,0 +1,26 @@
+[{
+    "type": "text",
+    "text": "平常常見的急救箱",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "觀察",
+                    "data": "text=first_aid_01"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "打開急救箱",
+                        "data": "text=first_aid_02"
+                    }
+                }
+            ]
+        }
+    }
+
+]

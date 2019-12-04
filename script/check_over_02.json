@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "雖然精神上受到了一定的衝擊，不過房間內部似乎還有些東西可以調查。",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "調查房間",
+                    "data": "text=check_elevator_back"
+                    }
+                }
+            ]
+       }
+    }
+]

@@ -19,7 +19,7 @@ app = Flask(__name__,static_url_path='/image_trpg_elevator',static_folder='../im
 
 line_bot_api = LineBotApi(secret_file.get("channel_access_token"))
 handler = WebhookHandler(secret_file.get('secret_key'))
-count = 0
+count = {}
 
 @app.route('/',methods = ['POST'])
 def callback():
@@ -59,7 +59,7 @@ def reply_user_and_get_user_id(event):
     user_profile = line_bot_api.get_profile(event.source.user_id)
     with open('users_profile.txt','a') as us_file:
         us_file.write(json.dumps(vars(user_profile),sort_keys=True))
-        us_file.write('\r\n')
+        us_file.write('\n')
 
     # 綁定圖文選單
 
@@ -84,10 +84,19 @@ import character
 def handler_message(event):
     global count
     if event.message.text == 'gamestart':
-        character.character()
+        character.character(event.source.user_id)
         ca = open('cb/ability.json','r')
         cb = json.load(ca)
-        sanA = cb.get('san')
+        sanA = cb[event.source.user_id]['san']
+        count[event.source.user_id] = 0
+        with open('cb/item.json','r') as it:
+            wallpaper_key = json.load(it)
+            with open('cb/item.json','r') as key_get:
+                wallpaper_key[event.source.user_id] = {"wallpaper": "false","key_1": "false"}
+        with open('cb/sign.json','r') as sign_in_name:
+            sign_in = json.load(sign_in_name)
+            with open('cb/sign.json','w') as gg:
+                sign_in[event.source.user_id] = {"sign":"false"}
         con_QRB = QuickReply(items=[
                 QuickReplyButton(
                 action=PostbackAction(
@@ -106,22 +115,14 @@ def handler_message(event):
             ]
         )
         line_bot_api.unlink_rich_menu_from_user(event.source.user_id)
+        print(count)
         # 之後再把這行打開
 
-
-        # TODO: 完成擲骰子的動作，順便考慮如何讓1D20之類的參數傳回去
-
-
-    else:
-        # TODO: 完成電梯內各種操作，考慮一下要使用圖文選單還是quickreply
-        # 若是要做圖文選單可以做到下面
-        count += 1
-        character.count(count)
-        pass
 
 
 
 from urllib.parse import parse_qs
+import dice_roll
 
 @handler.add(PostbackEvent)
 def process_postback_event(event):
@@ -132,8 +133,8 @@ def process_postback_event(event):
         menu_message_local = query_postback_dict.get('menu')[0]
         linkRichMenuId = open("image_trpg_elevator/rich_menu/{}/rich_menu_id".format(menu_message_local), 'r').read()
         line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)
-        count += 1
-        character.count(count)
+        count[event.source.user_id] += 1
+        character.count(count[event.source.user_id])
 
 
     elif 'text' in query_postback_dict:
@@ -143,24 +144,22 @@ def process_postback_event(event):
             event.reply_token,
             text_message_array
         )
-        count += 1
-        character.count(count)
+        count[event.source.user_id] += 1
+        character.count(count[event.source.user_id])
     
 
     elif 'sign' in query_postback_dict:
-        sign_name = {'sign_name':'true'}
-        sign_in = json.load(open('cb/item.json'))
-        if type(sign_in) is dict:
-            sign_in = [sign_in]
-        sign_in.append(sign_name)
-        with open('cb/item.json','w') as sign_in_name:
-            json.dump(sign_in,sign_in_name)
+        with open('cb/sign.json','r') as sign_in_name:
+            sign_in = json.load(sign_in_name)
+            with open('cb/sign.json','w') as gg:
+                sign_in[event.source.user_id]["sign"] = "true"
+                json.dump(sign_in,gg)
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="在廣告上寫下了名字...")
         )
-        count += 1
-        character.count(count)
+        count[event.source.user_id] += 1
+        character.count(count[event.source.user_id])
         
 
     elif 'unlink' in query_postback_dict:
@@ -172,12 +171,40 @@ def process_postback_event(event):
             unlink_message_array
         )
 
-    # elif 'dice' in query_postback_dict:
-    #     unlink_message_local = "script/{}.json".format(query_postback_dict.get('unlink')[0])
-        
+    elif 'dice' in query_postback_dict:
+        dice_number = query_postback_dict.get('dice')[0]
+        line_bot_api.reply_message(
+            event.reply_token,
+            dice_roll.dice_(event.source.user_id,dice_number)
+        )
 
+    elif 'wallpaper' in query_postback_dict:
+        with open('cb/item.json','r') as it:
+            wallpaper_key = json.load(it)[event.source.user_id]['wallpaper']
+            if wallpaper_key == 'true':
+                wallpaper_message_local = "script/{}.json".format(query_postback_dict.get('wallpaper')[0])
+                wallpaper_message_array = detect_json(wallpaper_message_local)
+                line_bot_api.reply_message(
+                event.reply_token,
+                wallpaper_message_array
+                )
+            else:
+                line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="沒有鑰匙..."
+                ))
+    elif 'key' in query_postback_dict:
+        with open('cb/item.json','r') as it:
+            get_key = json.load(it)
+            with open('cb/item.json','w') as key_:
+                get_key[event.source.user_id]['wallpaper'] = "true"
+                get_key[event.source.user_id]['key_1'] = "true"
+                json.dump(get_key,key_)
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="拿到了兩把鑰匙!"
+        ))
 
-        
 
 if __name__ =='__main__':
     port = int(os.environ.get("PORT",5000))

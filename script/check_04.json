@@ -21,7 +21,7 @@
                 "action": {
                     "type": "postback",
                     "label": "仔細看看廣告",
-                    "data": "SanCheck=check_ad"
+                    "data": "text=check_ad"
                     }
                 },
                 {

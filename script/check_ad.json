@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "仔細看了看廣告，發現廣告上的字是由血液寫成的...\n請進行SAN值檢定。",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "擲骰子",
+                    "data": "dice=D0_12"
+                    }
+                }
+            ]
+       }
+    }
+]

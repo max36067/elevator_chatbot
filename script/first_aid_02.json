@@ -1,0 +1,26 @@
+[{
+    "type": "text",
+    "text": "打開了急救箱，發現內部有兩把鑰匙。",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "收起鑰匙",
+                    "data": "key=take_key"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "message",
+                        "label": "不拿鑰匙",
+                        "text": "無視了鑰匙並且把急救箱關起來了。"
+                        }
+                    }
+            ]
+        }
+    }
+
+]

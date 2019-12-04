@@ -1,0 +1,27 @@
+[
+    {
+    "type": "text",
+    "text": "看起來很溫暖的毛毯",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "披上毛毯",
+                    "data": "text=blanket_01"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "觀察毛毯",
+                        "data": "text=blanket_02"
+                        }
+                    }
+            ]
+        }
+    }
+
+]

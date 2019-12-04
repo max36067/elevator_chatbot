@@ -14,19 +14,22 @@ import main_rich_menu as mrm
 import os
 
 
-def character():
-    os.remove('cb/ability.json')
+
+def character(user_id):
     san = (randint(1,6)+randint(1,6)+randint(1,6))*5
-    a = {'san':san}
-    with open('cb/ability.json','w') as f:
-        json.dump(a,f)
-    
+    with open('cb/ability.json','r') as f:
+        dic = json.load(f)
+        with open('cb/ability.json','w') as d:
+            dic[user_id] = {'san':san}
+            json.dump(dic,d)
+
+
 
 # sancheck模組，主要用來偵測san值是否歸零
-def lowsan():
+def lowsan(user_id):
     f = open('cb/ability.json','r')
     a = json.load(f)
-    sancheck = a.get('san')
+    sancheck = a[user_id]['san']
     restart_place = "script/gameover.json"
     # 如果san值過低，提醒玩家
     if 5 >= sancheck > 0:
@@ -45,15 +48,7 @@ def lowsan():
 讓值傳入函數?
 '''
 
-def dice_():
-    dice_roll = randint(1,100)
-    f = open('cb/ability.json','r')
-    a = json.load(f)
-    sancheck = a.get('san')
-    san_check_list = [
-        TextSendMessage(text="骰出來的SAN值檢定為{}".format(dice_roll)),
-        TextSendMessage(text="您的SAN值為{}".format(sancheck)),
-    ]
+
 
 
 

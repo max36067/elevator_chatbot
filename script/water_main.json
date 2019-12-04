@@ -1,0 +1,35 @@
+[
+    {
+    "type": "text",
+    "text": "看起來很普通的水",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "觀察",
+                    "data": "text=water_01"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "喝水",
+                        "data": "text=water_02"
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "action": {
+                            "type": "postback",
+                            "label": "搖一搖",
+                            "data": "text=water_03"
+                            }
+                        }
+            ]
+        }
+    }
+
+]

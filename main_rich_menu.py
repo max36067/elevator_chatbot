@@ -24,7 +24,7 @@ def run():
         print('圖片上傳結果')
         print(set_image_response)
 
-run()
+# run()
 
 # rich_menu_list = line_bot_api.get_rich_menu_list()
 # for rich_menu in rich_menu_list:

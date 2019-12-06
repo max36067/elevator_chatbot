@@ -229,7 +229,7 @@ def process_postback_event(event):
                     json.dump(get_button,button)
     elif 'end' in query_postback_dict:
         end_message_local = "script/{}.json".format(query_postback_dict.get('end')[0])
-        end_message_array = detect_json(text_message_local)
+        end_message_array = detect_json(end_message_local)
         with open('cb/button.json','r') as it:
             get_button = json.load(it)
             if get_button[event.source.user_id]['button'] == "true":

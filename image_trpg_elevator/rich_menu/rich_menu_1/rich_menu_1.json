@@ -82,7 +82,7 @@
         "action": {
           "type": "postback",
           "text": "調查電梯防災箱",
-          "data": "wallpaper=open_control"
+          "data": "menu=rich_menu_8"
         }
       }
     ]

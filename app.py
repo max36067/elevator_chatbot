@@ -130,12 +130,29 @@ import dice_roll
 @handler.add(PostbackEvent)
 def process_postback_event(event):
     query_postback_dict = parse_qs(event.postback.data)
+    print(query_postback_dict)
     global count
     if 'menu' in query_postback_dict:
         # 在main_rich_menu裡面做出幾個圖文選單並綁定
         menu_message_local = query_postback_dict.get('menu')[0]
         if menu_message_local == 'rich_menu_check':
             character.count(event.source.user_id,count[event.source.user_id])
+        elif menu_message_local in ["rich_menu_control","rich_menu_control_1"]:
+            with open('cb/item.json','r') as f:
+                key_1 = json.load(f)[event.source.user_id]['key_1']
+                if key_1 == "true":
+                    line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="用鑰匙打開了控制面板")
+                    )
+                    linkRichMenuId = open("image_trpg_elevator/rich_menu/{}/rich_menu_id".format(menu_message_local), 'r').read()
+                    line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)
+                else:
+                    line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text="沒有鑰匙...")
+                    )
+
         else:
             linkRichMenuId = open("image_trpg_elevator/rich_menu/{}/rich_menu_id".format(menu_message_local), 'r').read()
             line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)

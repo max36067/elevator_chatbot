@@ -7,7 +7,7 @@
 '''
 import json
 from json_ import detect_json
-from linebot.models import TextSendMessage,MessageEvent,TemplateSendMessage
+from linebot.models import TextSendMessage,MessageEvent,TemplateSendMessage,QuickReply, QuickReplyButton,PostbackAction
 from linebot import LineBotApi
 from random import randint
 import time
@@ -83,7 +83,27 @@ def floor_move(user_id,count_number):
     elif count_number == 65:
         line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向下移動。"))
     elif count_number == 75:
-        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向上移動。"))
+        line_bot_api.push_message( user_id, 
+        TextSendMessage(text="電梯開始移動了..貌似是向上移動。")
+        )
+        line_bot_api.unlink_rich_menu_from_user(user_id)
+        con_QRB = QuickReply(items=[
+                QuickReplyButton(
+                action=PostbackAction(
+                    label="game over",
+                    data="text=template"
+                    )
+                )
+            ]
+        )
+        time.sleep(3)
+        line_bot_api.push_message( user_id,
+        TextSendMessage(text="但是電梯沒在十樓停下，電梯就會再度往上\n接著，「空－」的一聲，樓層顯示中的「地獄」、「天堂」的樓層燈亮起來了\n瞬間，探索者(你)感覺身體似乎浮了起來\n接著，探索者(你)沒了知覺....")
+        )
+        time.sleep(3)
+        line_bot_api.push_message( user_id,
+        TextSendMessage(text="當天晚上，新聞播報了電梯墜落事故，死者數名的消息.....",quick_reply=con_QRB))
+        
     elif count_number == 20:
             line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上六樓的燈亮了起來"))
     elif count_number == 30:

@@ -91,12 +91,19 @@ def handler_message(event):
         count[event.source.user_id] = 0
         with open('cb/item.json','r') as it:
             wallpaper_key = json.load(it)
-            with open('cb/item.json','r') as key_get:
+            with open('cb/item.json','w') as key_get:
                 wallpaper_key[event.source.user_id] = {"wallpaper": "false","key_1": "false"}
+                json.dump(wallpaper_key,key_get)
         with open('cb/sign.json','r') as sign_in_name:
             sign_in = json.load(sign_in_name)
             with open('cb/sign.json','w') as gg:
                 sign_in[event.source.user_id] = {"sign":"false"}
+                json.dump(sign_in,gg)
+        with open('cb/button.json','r') as it:
+            get_button = json.load(it)
+            with open('cb/button.json','w') as key_:
+                get_button[event.source.user_id] = {"button":"false"}
+                json.dump(get_button,key_)
         con_QRB = QuickReply(items=[
                 QuickReplyButton(
                 action=PostbackAction(
@@ -115,10 +122,6 @@ def handler_message(event):
             ]
         )
         line_bot_api.unlink_rich_menu_from_user(event.source.user_id)
-        print(count)
-        # 之後再把這行打開
-
-
 
 
 from urllib.parse import parse_qs
@@ -131,24 +134,28 @@ def process_postback_event(event):
     if 'menu' in query_postback_dict:
         # 在main_rich_menu裡面做出幾個圖文選單並綁定
         menu_message_local = query_postback_dict.get('menu')[0]
-        linkRichMenuId = open("image_trpg_elevator/rich_menu/{}/rich_menu_id".format(menu_message_local), 'r').read()
-        line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)
-        count[event.source.user_id] += 1
-        character.count(count[event.source.user_id])
+        if menu_message_local == 'rich_menu_check':
+            character.count(event.source.user_id,count[event.source.user_id])
+        else:
+            linkRichMenuId = open("image_trpg_elevator/rich_menu/{}/rich_menu_id".format(menu_message_local), 'r').read()
+            line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)
 
 
     elif 'text' in query_postback_dict:
+        count[event.source.user_id] += 1
+        character.floor_move(event.source.user_id,count[event.source.user_id])
         text_message_local = "script/{}.json".format(query_postback_dict.get('text')[0])
         text_message_array = detect_json(text_message_local)
         line_bot_api.reply_message(
             event.reply_token,
             text_message_array
         )
-        count[event.source.user_id] += 1
-        character.count(count[event.source.user_id])
+        
     
 
     elif 'sign' in query_postback_dict:
+        count[event.source.user_id] += 1
+        character.floor_move(event.source.user_id,count[event.source.user_id])
         with open('cb/sign.json','r') as sign_in_name:
             sign_in = json.load(sign_in_name)
             with open('cb/sign.json','w') as gg:
@@ -158,8 +165,7 @@ def process_postback_event(event):
             event.reply_token,
             TextSendMessage(text="在廣告上寫下了名字...")
         )
-        count[event.source.user_id] += 1
-        character.count(count[event.source.user_id])
+        
         
 
     elif 'unlink' in query_postback_dict:
@@ -179,6 +185,8 @@ def process_postback_event(event):
         )
 
     elif 'wallpaper' in query_postback_dict:
+        count[event.source.user_id] += 1
+        character.floor_move(event.source.user_id,count[event.source.user_id])
         with open('cb/item.json','r') as it:
             wallpaper_key = json.load(it)[event.source.user_id]['wallpaper']
             if wallpaper_key == 'true':
@@ -194,18 +202,48 @@ def process_postback_event(event):
                 TextSendMessage(text="沒有鑰匙..."
                 ))
     elif 'key' in query_postback_dict:
+        count[event.source.user_id] += 1
+        character.floor_move(event.source.user_id,count[event.source.user_id])
         with open('cb/item.json','r') as it:
             get_key = json.load(it)
-            with open('cb/item.json','w') as key_:
-                get_key[event.source.user_id]['wallpaper'] = "true"
-                get_key[event.source.user_id]['key_1'] = "true"
-                json.dump(get_key,key_)
-        line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="拿到了兩把鑰匙!"
-        ))
-
-
+            if get_key[event.source.user_id]['wallpaper'] == "false" and get_key[event.source.user_id]['key_1'] == "false":
+                with open('cb/item.json','w') as key_:
+                    get_key[event.source.user_id]['wallpaper'] = "true"
+                    get_key[event.source.user_id]['key_1'] = "true"
+                    json.dump(get_key,key_)
+                line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="拿到了兩把鑰匙!"
+                ))
+            else:
+                line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="已經有鑰匙了"
+                ))
+    elif 'button' in query_postback_dict:
+        with open('cb/button.json','r') as it:
+            get_button = json.load(it)
+            if get_button[event.source.user_id]['button'] == "false":
+                with open('cb/button.json','w') as button:
+                    get_button[event.source.user_id]['button'] = "true"
+                    json.dump(get_button,button)
+    elif 'end' in query_postback_dict:
+        end_message_local = "script/{}.json".format(query_postback_dict.get('end')[0])
+        end_message_array = detect_json(text_message_local)
+        with open('cb/button.json','r') as it:
+            get_button = json.load(it)
+            if get_button[event.source.user_id]['button'] == "true":
+                line_bot_api.reply_message(
+                event.reply_token,
+                end_message_array
+                ))
+            else:
+                line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="沒有甚麼反應..."
+                ))
+        #TODO:想想怎麼串接_rich_menu_ctrl_1
+        
 if __name__ =='__main__':
     port = int(os.environ.get("PORT",5000))
     app.run(host='0.0.0.0', port=port)

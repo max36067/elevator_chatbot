@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "電梯停下來了!並且在最靠近的樓層開門",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "離開電梯",
+                    "data": "text=true_end_1"
+                    }
+                }
+            ]
+        }
+    }
+]

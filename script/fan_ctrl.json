@@ -1,0 +1,26 @@
+[
+    {
+    "type": "text",
+    "text": "你打算...",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "message",
+                    "label": "開啟換氣扇",
+                    "text": "沒什麼事情發生"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "message",
+                        "label": "關閉換氣扇",
+                        "text": "開始變得有點悶熱了"
+                        }
+                    }
+            ]
+        }
+    }
+]

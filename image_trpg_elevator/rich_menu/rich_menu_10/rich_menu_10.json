@@ -17,7 +17,7 @@
         "action": {
           "type": "postback",
           "text": "調查電梯操作盤",
-          "data": "menu=rich_menu_7"
+          "data": "menu=rich_menu_11"
         }
       },
       {

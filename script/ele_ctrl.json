@@ -1,0 +1,26 @@
+[
+    {
+    "type": "text",
+    "text": "你打算...",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "message",
+                    "label": "按下開啟",
+                    "text": "沒有甚麼作用"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "message",
+                        "label": "按下關閉",
+                        "text": "沒有甚麼作用"
+                        }
+                    }
+            ]
+        }
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "電梯門一關，就聽到後面傳來隆隆隆隆隆的轟沉音，接著就會想起沉重的衝擊聲\n電梯似乎是急墜，摔爛在最下層了...",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "End!ThankYouForPlaying!",
+                    "data": "text=template"
+                    }
+                }
+            ]
+        }
+    }
+]

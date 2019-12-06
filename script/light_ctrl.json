@@ -1,0 +1,26 @@
+[
+    {
+    "type": "text",
+    "text": "你打算....",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "message",
+                    "label": "開啟",
+                    "text": "電梯變亮了!"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "message",
+                        "label": "關閉",
+                        "text": "電梯變暗了!"
+                        }
+                    }
+            ]
+        }
+    }
+]

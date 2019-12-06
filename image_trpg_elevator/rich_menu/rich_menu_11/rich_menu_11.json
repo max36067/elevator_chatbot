@@ -43,7 +43,7 @@
         "action": {
           "type": "postback",
           "text": "查看樓層面板",
-          "data": "menu=rich_menu_check"
+          "data": "menu=rich_menu_9"
         }
       },
       {
@@ -56,7 +56,7 @@
         "action": {
           "type": "postback",
           "text": "查看維修面板",
-          "data": "text=open_control"
+          "data": "text=open_control_1"
         }
       },
       {

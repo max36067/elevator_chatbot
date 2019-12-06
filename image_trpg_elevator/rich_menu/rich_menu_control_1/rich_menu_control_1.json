@@ -1,0 +1,50 @@
+{
+    "size": {
+      "width": 2500,
+      "height": 843
+    },
+    "selected": true,
+    "name": "圖文選單 2",
+    "chatBarText": "維修面板",
+    "areas": [
+      {
+        "bounds": {
+          "x": 8,
+          "y": 8,
+          "width": 867,
+          "height": 825
+        },
+        "action": {
+          "type": "postback",
+          "text": "換氣扇開關",
+          "data": "text=fan_ctrl"
+        }
+      },
+      {
+        "bounds": {
+          "x": 887,
+          "y": 8,
+          "width": 1010,
+          "height": 816
+        },
+        "action": {
+          "type": "postback",
+          "text": "電梯停止/啟動開關",
+          "data": "text=ele_ctrl_1"
+        }
+      },
+      {
+        "bounds": {
+          "x": 1909,
+          "y": 29,
+          "width": 589,
+          "height": 804
+        },
+        "action": {
+          "type": "postback",
+          "text": "電燈開關",
+          "data": "text=light_ctrl"
+        }
+      }
+    ]
+  }

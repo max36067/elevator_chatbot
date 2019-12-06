@@ -8,11 +8,16 @@
 import json
 from json_ import detect_json
 from linebot.models import TextSendMessage,MessageEvent,TemplateSendMessage
+from linebot import LineBotApi
 from random import randint
 import time
 import main_rich_menu as mrm
 import os
 
+f = os.getcwd()
+d = open("{}/{}".format(f, 'line_bot_secret_key.json'), 'r', encoding="big5")
+secret_file = json.load(d)
+line_bot_api = LineBotApi(secret_file.get("channel_access_token"))
 
 
 def character(user_id):
@@ -25,55 +30,69 @@ def character(user_id):
 
 
 
-# sancheck模組，主要用來偵測san值是否歸零
-def lowsan(user_id):
-    f = open('cb/ability.json','r')
-    a = json.load(f)
-    sancheck = a[user_id]['san']
-    restart_place = "script/gameover.json"
-    # 如果san值過低，提醒玩家
-    if 5 >= sancheck > 0:
-        low = [TextSendMessage(text= "SAN值快沒了....")]
-        return low
-    # 如果san值歸零，提示玩家遊戲結束，是否重新開始遊玩 
-    elif sancheck <= 0:
-        gameover_list = [TextSendMessage(text= "SAN值歸零了....。"),
-        detect_json(restart_place)
-        ]
-        return gameover_list
-    f.close()
-
-'''
-如何做出1D2，1D3等等差別?
-讓值傳入函數?
-'''
 
 
-
-
-
-def count(count_times):
+def count(user_id,count_times):
     # 四
-    if count_times == 7:
-        pass
+    if count_times >= 0:
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_2/rich_menu_id", 'r').read()
+        line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
     # 二
-    elif count_times == 11:
-        pass
+    elif count_times >= 20:
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_3/rich_menu_id", 'r').read()
+        line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+        
     # 六
-    elif count_times == 15:
-        pass
+    elif count_times >= 30:
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_2/rich_menu_id", 'r').read()
+        line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+        
     # 二
-    elif count_times == 19:
-        pass
+    elif count_times >= 40:
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_5/rich_menu_id", 'r').read()
+        line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+        
     # 十
-    elif count_times == 23:
-        pass
+    elif count_times >= 50:
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_4/rich_menu_id", 'r').read()
+        line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+        
     # 五
-    elif count_times == 27:
-        pass
+    elif count_times >= 60:
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_6/rich_menu_id", 'r').read()
+        line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+        
     # 一
-    elif count_times == 31:
-        pass
-    # 十
-    elif count_times == 35:
-        pass
+    elif count_times >= 70:
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_10/rich_menu_id", 'r').read()
+        line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+
+
+
+def floor_move(user_id,count_number):
+    if count_number == 15:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向下移動。"))
+    elif count_number == 25:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向上移動。"))
+    elif count_number == 35:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向下移動。"))
+    elif count_number == 45:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向上移動。"))
+    elif count_number == 55:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向下移動。"))
+    elif count_number == 65:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向下移動。"))
+    elif count_number == 75:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向上移動。"))
+    elif count_number == 20:
+            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上六樓的燈亮了起來"))
+    elif count_number == 30:
+            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上二樓的燈亮了起來"))
+    elif count_number == 40:
+            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上十樓的燈亮了起來"))
+    elif count_number == 50:
+            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上五樓的燈亮了起來"))
+    elif count_number == 60:
+            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上一樓的燈亮了起來"))
+    elif count_number == 70:
+            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上十樓的燈亮了起來"))

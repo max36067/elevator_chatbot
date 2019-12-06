@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "打開了電梯控制面板",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "查看內部",
+                    "data": "menu=rich_menu_control"
+                    }
+                }
+            ]
+        }
+    }
+]

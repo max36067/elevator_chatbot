@@ -1,0 +1,50 @@
+{
+    "size": {
+      "width": 2500,
+      "height": 843
+    },
+    "selected": true,
+    "name": "圖文選單 2",
+    "chatBarText": "操作選項",
+    "areas": [
+      {
+        "bounds": {
+          "x": 8,
+          "y": 13,
+          "width": 858,
+          "height": 803
+        },
+        "action": {
+          "type": "postback",
+          "text": "甚麼事也沒發生",
+          "data": "menu=rich_menu_check"
+        }
+      },
+      {
+        "bounds": {
+          "x": 883,
+          "y": 25,
+          "width": 791,
+          "height": 799
+        },
+        "action": {
+          "type": "postback",
+          "text": "甚麼事也沒發生",
+          "data": "button=true_button"
+        }
+      },
+      {
+        "bounds": {
+          "x": 1708,
+          "y": 29,
+          "width": 778,
+          "height": 791
+        },
+        "action": {
+          "type": "postback",
+          "text": "甚麼事也沒發生",
+          "data": "menu=rich_menu_check"
+        }
+      }
+    ]
+  }

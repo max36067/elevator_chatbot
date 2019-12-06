@@ -1,0 +1,36 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "圖文選單 2",
+  "chatBarText": "電梯樓層按鈕",
+  "areas": [
+    {
+      "bounds": {
+        "x": 1963,
+        "y": 326,
+        "width": 489,
+        "height": 473
+      },
+      "action": {
+        "type": "postback",
+        "text": "你打算...",
+        "data": "menu=rich_menu_button_1"
+      }
+    },
+    {
+      "bounds": {
+        "x": 59,
+        "y": 1292,
+        "width": 591,
+        "height": 254
+      },
+      "action": {
+        "type": "postback",
+        "data": "menu=rich_menu_7"
+      }
+    }
+  ]
+}

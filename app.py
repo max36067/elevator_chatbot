@@ -236,12 +236,12 @@ def process_postback_event(event):
                 line_bot_api.reply_message(
                 event.reply_token,
                 end_message_array
-                ))
+                )
             else:
                 line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="沒有甚麼反應..."
-                ))
+                )
         #TODO:想想怎麼串接_rich_menu_ctrl_1
         
 if __name__ =='__main__':

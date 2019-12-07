@@ -9,9 +9,9 @@
     "areas": [
       {
         "bounds": {
-          "x": 8,
-          "y": 8,
-          "width": 867,
+          "x": 362,
+          "y": 0,
+          "width": 766,
           "height": 825
         },
         "action": {
@@ -22,9 +22,9 @@
       },
       {
         "bounds": {
-          "x": 887,
+          "x": 1140,
           "y": 8,
-          "width": 1010,
+          "width": 757,
           "height": 816
         },
         "action": {
@@ -44,6 +44,18 @@
           "type": "postback",
           "text": "電燈開關",
           "data": "text=light_ctrl"
+        }
+      },
+      {
+        "bounds": {
+          "x": 1909,
+          "y": 29,
+          "width": 589,
+          "height": 804
+        },
+        "action": {
+          "type": "postback",
+          "data": "menu=rich_menu_7"
         }
       }
     ]

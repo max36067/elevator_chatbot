@@ -147,6 +147,8 @@ def process_postback_event(event):
                     )
                     linkRichMenuId = open("image_trpg_elevator/rich_menu/{}/rich_menu_id".format(menu_message_local), 'r').read()
                     line_bot_api.link_rich_menu_to_user(event.source.user_id,linkRichMenuId)
+                    count[event.source.user_id] += 1
+                    character.floor_move(event.source.user_id,count[event.source.user_id])
                 else:
                     line_bot_api.reply_message(
                     event.reply_token,
@@ -159,20 +161,19 @@ def process_postback_event(event):
 
 
     elif 'text' in query_postback_dict:
-        count[event.source.user_id] += 1
-        character.floor_move(event.source.user_id,count[event.source.user_id])
+        
         text_message_local = "script/{}.json".format(query_postback_dict.get('text')[0])
         text_message_array = detect_json(text_message_local)
         line_bot_api.reply_message(
             event.reply_token,
             text_message_array
         )
-        
+        count[event.source.user_id] += 1
+        character.floor_move(event.source.user_id,count[event.source.user_id])
     
 
     elif 'sign' in query_postback_dict:
-        count[event.source.user_id] += 1
-        character.floor_move(event.source.user_id,count[event.source.user_id])
+        
         with open('cb/sign.json','r') as sign_in_name:
             sign_in = json.load(sign_in_name)
             with open('cb/sign.json','w') as gg:
@@ -182,7 +183,8 @@ def process_postback_event(event):
             event.reply_token,
             TextSendMessage(text="在廣告上寫下了名字...")
         )
-        
+        count[event.source.user_id] += 1
+        character.floor_move(event.source.user_id,count[event.source.user_id])
         
 
     elif 'unlink' in query_postback_dict:
@@ -202,8 +204,7 @@ def process_postback_event(event):
         )
 
     elif 'wallpaper' in query_postback_dict:
-        count[event.source.user_id] += 1
-        character.floor_move(event.source.user_id,count[event.source.user_id])
+        
         with open('cb/item.json','r') as it:
             wallpaper_key = json.load(it)[event.source.user_id]['wallpaper']
             if wallpaper_key == 'true':
@@ -213,14 +214,17 @@ def process_postback_event(event):
                 event.reply_token,
                 wallpaper_message_array
                 )
+                count[event.source.user_id] += 1
+                character.floor_move(event.source.user_id,count[event.source.user_id])
             else:
                 line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="沒有鑰匙..."
                 ))
+                count[event.source.user_id] += 1
+                character.floor_move(event.source.user_id,count[event.source.user_id])
     elif 'key' in query_postback_dict:
-        count[event.source.user_id] += 1
-        character.floor_move(event.source.user_id,count[event.source.user_id])
+        
         with open('cb/item.json','r') as it:
             get_key = json.load(it)
             if get_key[event.source.user_id]['wallpaper'] == "false" and get_key[event.source.user_id]['key_1'] == "false":
@@ -232,11 +236,15 @@ def process_postback_event(event):
                 event.reply_token,
                 TextSendMessage(text="拿到了兩把鑰匙!"
                 ))
+                count[event.source.user_id] += 1
+                character.floor_move(event.source.user_id,count[event.source.user_id])
             else:
                 line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="已經有鑰匙了"
                 ))
+                count[event.source.user_id] += 1
+                character.floor_move(event.source.user_id,count[event.source.user_id])
     elif 'button' in query_postback_dict:
         with open('cb/button.json','r') as it:
             get_button = json.load(it)

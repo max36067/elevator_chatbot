@@ -1,6 +1,6 @@
 import json
 from linebot.models import (
-    ImagemapSendMessage,TextSendMessage,ImageSendMessage,LocationSendMessage,FlexSendMessage,VideoSendMessage,StickerSendMessage,AudioSendMessage
+    ImagemapSendMessage,TextSendMessage,ImageSendMessage,LocationSendMessage,VideoSendMessage,StickerSendMessage,AudioSendMessage
 )
 
 from linebot.models.template import (
@@ -8,7 +8,7 @@ from linebot.models.template import (
     
 )
 
-from linebot.models.template import *
+from linebot.models.template import TemplateSendMessage
 
 def detect_json(fileName):
     #開啟檔案，轉成json
@@ -35,11 +35,7 @@ def detect_json(fileName):
         elif message_type == 'audio':
             returnArray.append(AudioSendMessage.new_from_json_dict(jsonObject))  
         elif message_type == 'location':
-            returnArray.append(LocationSendMessage.new_from_json_dict(jsonObject))
-        elif message_type == 'flex':
-            returnArray.append(FlexSendMessage.new_from_json_dict(jsonObject))  
-        elif message_type == 'video':
-            returnArray.append(FlexSendMessage.new_from_json_dict(jsonObject))   
+            returnArray.append(LocationSendMessage.new_from_json_dict(jsonObject))   
 
 
     # 回傳

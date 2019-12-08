@@ -1,45 +1,46 @@
-{
-    "type": "template",
-    "altText": "this is a carousel template",
-    "template": {
-      "type": "carousel",
-      "actions": [],
-      "columns": [
-        {
-          "thumbnailImageUrl": "https://imgur.com/cj6TMDB.jpg",
-          "title": "了解TRPG是什麼",
-          "text": "看看trpg都在玩什麼吧~",
-          "actions": [
-            {
-              "type": "uri",
-              "label": "科普trpg",
-              "uri": "https://zh.moegirl.org/zh-tw/TRPG"
-            },
-            {
-              "type": "uri",
-              "label": "骰子的規則",
-              "uri": "https://sites.google.com/site/lltrpgspace/coc7th/leng-lan-de-coc-7th-fang-gui?tmpl=/system/app/templates/print/&showPrintDialog=1"
-            }
-          ]
-        },
-        {
-          "thumbnailImageUrl": "https://imgur.com/vABagXN.jpg",
-          "title": "再玩一次?",
-          "text": "想再被虐一次嗎?",
-          "actions": [
-            {
-              "type": "postback",
-              "label": "好",
-              "text":"點擊下方圖文選單就可以重新開始唷!",
-              "data": "menu=rich_menu_main"
-            },
-            {
-              "type": "postback",
-              "label": "下次再玩",
-              "text": "手動輸入gamestart就可以重新開始遊玩唷!感謝您這次的遊玩，我們下次再見~"
-            }
-          ]
-        }
-      ]
-    }
+[
+  {
+  "type": "template",
+  "altText": "this is a carousel template",
+  "template": {
+    "type": "carousel",
+    "actions": [],
+    "columns": [
+      {
+        "thumbnailImageUrl": "https://imgur.com/cj6TMDB.jpg",
+        "title": "了解TRPG是什麼",
+        "text": "看看trpg都在玩什麼吧~",
+        "actions": [
+          {
+            "type": "uri",
+            "label": "科普trpg",
+            "uri": "https://zh.moegirl.org/zh-tw/TRPG"
+          },
+          {
+            "type": "uri",
+            "label": "骰子的規則",
+            "uri": "https://sites.google.com/site/lltrpgspace/coc7th/leng-lan-de-coc-7th-fang-gui?tmpl=/system/app/templates/print/&showPrintDialog=1"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://imgur.com/vABagXN.jpg",
+        "title": "再玩一次?",
+        "text": "想再被虐一次嗎?",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "好",
+            "data": "menu=rich_menu_main"
+          },
+          {
+            "type": "message",
+            "label": "下次再說",
+            "text": "可以手動輸入gamestart來重新遊玩喔!感謝您這次的遊玩，我們下次再見~"
+          }
+        ]
+      }
+    ]
   }
+}
+]

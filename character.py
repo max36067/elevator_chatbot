@@ -7,7 +7,7 @@
 '''
 import json
 from json_ import detect_json
-from linebot.models import TextSendMessage,MessageEvent,TemplateSendMessage,QuickReply, QuickReplyButton,PostbackAction
+from linebot.models import TextSendMessage,MessageEvent,TemplateSendMessage,QuickReply, QuickReplyButton,PostbackAction,ImageSendMessage,VideoSendMessage
 from linebot import LineBotApi
 from random import randint
 import time
@@ -88,31 +88,55 @@ def floor_move(user_id,count_number):
         )
         line_bot_api.unlink_rich_menu_from_user(user_id)
         con_QRB = QuickReply(items=[
+                    QuickReplyButton(
+                    action=PostbackAction(
+                        label="game over",
+                        data="text=template"
+                        )
+                    )
+                ]
+            )
+        with open('cb/sign.json','r') as f:
+            sign_check = json.load(f)
+        if sign_check == "true":
+            line_bot_api.push_message( user_id,
+            TextSendMessage(text="電梯停在了十樓，電梯門輕巧的打開，在你眼前的，是不曾在現實中看過、無盡的黑暗\n無關你自己的意志、你就這樣走出了電梯...\n這之後會發生什麼，就無法得知了...",quick_reply=con_QRB)
+            )
+        else:
+            time.sleep(3)
+            line_bot_api.push_message( user_id,
+            TextSendMessage(text="但是電梯沒在十樓停下，電梯再度往上移動....\n接著，「空－」的一聲，樓層顯示中的「地獄」、「天堂」的樓層燈亮起來了\n瞬間，探索者(你)感覺身體似乎浮了起來\n接著，探索者(你)沒了知覺....")
+            )
+            linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_12/rich_menu_id", 'r').read()
+            line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+            line_bot_api.push_message(
+                user_id,
+                VideoSendMessage(original_content_url="http://sendvid.com/prdetfsq",
+                preview_image_url="https://memeprod.s3.ap-northeast-1.amazonaws.com/user-wtf/1573911645133.jpg")
+            )
+            time.sleep(5)
+            line_bot_api.push_message( user_id,
+            TextSendMessage(text="當天晚上，新聞播報了電梯墜落事故，死者數名的消息.....",quick_reply=con_QRB))
+        
+    elif count_number == 20:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上六樓的燈亮了起來"))
+    elif count_number == 30:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上二樓的燈亮了起來"))
+    elif count_number == 40:
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上十樓的燈亮了起來"))
+    elif count_number == 50:
+        line_bot_api.unlink_rich_menu_from_user(user_id)
+        ghost_come = QuickReply(items=[
                 QuickReplyButton(
                 action=PostbackAction(
-                    label="game over",
-                    data="text=template"
+                    label="...",
+                    data="text=ghost_1"
                     )
                 )
             ]
         )
-        time.sleep(3)
-        line_bot_api.push_message( user_id,
-        TextSendMessage(text="但是電梯沒在十樓停下，電梯就會再度往上\n接著，「空－」的一聲，樓層顯示中的「地獄」、「天堂」的樓層燈亮起來了\n瞬間，探索者(你)感覺身體似乎浮了起來\n接著，探索者(你)沒了知覺....")
-        )
-        time.sleep(3)
-        line_bot_api.push_message( user_id,
-        TextSendMessage(text="當天晚上，新聞播報了電梯墜落事故，死者數名的消息.....",quick_reply=con_QRB))
-        
-    elif count_number == 20:
-            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上六樓的燈亮了起來"))
-    elif count_number == 30:
-            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上二樓的燈亮了起來"))
-    elif count_number == 40:
-            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上十樓的燈亮了起來"))
-    elif count_number == 50:
-            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上五樓的燈亮了起來"))
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上五樓的燈亮了起來",quick_reply=ghost_come))
     elif count_number == 60:
-            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上一樓的燈亮了起來"))
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上一樓的燈亮了起來"))
     elif count_number == 70:
-            line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上十樓的燈亮了起來"))
+        line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上十樓的燈亮了起來"))

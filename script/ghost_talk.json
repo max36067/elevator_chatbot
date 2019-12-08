@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "你發現了佇立在那裏的女性，已經不是活著的人類了...\n但是，那個女性就好像是活著一般、靜靜的抬頭仰望著天花板。\n進行SAN值檢定",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "擲骰子",
+                    "data": "dice=D1_161"
+                    }
+                }
+            ]
+        }
+    }
+]

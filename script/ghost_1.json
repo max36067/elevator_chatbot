@@ -1,0 +1,35 @@
+[
+    {
+    "type": "text",
+    "text": "你突然感覺到一股違和感...\n不知道何時，電梯內多出了一個人!....\n站在電梯的正中央，穿著白色衣服的美麗女性，緊盯著天花板看。",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "觀察女性",
+                    "data": "text=ghost_talk"
+                    }
+                },
+                {
+                    "type": "action",
+                    "action": {
+                        "type": "postback",
+                        "label": "搭話",
+                        "data": "text=ghost_talk_1"
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "action": {
+                            "type": "postback",
+                            "label": "不理她",
+                            "data": "menu=rich_menu_1"
+                            }
+                        }
+            ]
+        }
+    }
+
+]

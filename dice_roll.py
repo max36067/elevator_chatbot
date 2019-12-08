@@ -16,7 +16,17 @@ def lowsan(san_check,san_check_list):
         return san_check_list
     # 如果san值歸零，提示玩家遊戲結束，是否重新開始遊玩 
     elif san_check <= 0:
-        gameover_list = [TextSendMessage(text= "SAN值歸零了....。")
+        con_QRB = QuickReply(items=[
+                QuickReplyButton(
+                action=PostbackAction(
+                    label="game over",
+                    data="text=template"
+                    )
+                )
+            ]
+        )
+        gameover_list = [TextSendMessage(text= "SAN值歸零了....。"),
+        TextSendMessage(text="你的精神開始錯亂、失控，你無法相信這一切，於是一頭撞向電梯的各個角落...最終失血過多而身亡",quick_reply=con_QRB)
         ]
         san_check_list.append(gameover_list)
         return san_check_list

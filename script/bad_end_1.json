@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "怪物無視於你的攻擊，並且迅速的將你咬住\n你感受到身體被撕裂，且似乎有麻痺還是毒液的東西流入了你體內...\n你的意識慢慢地遠去...",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "game over",
+                    "data": "text=template"
+                    }
+                }
+            ]
+        }
+    }
+]

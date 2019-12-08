@@ -6,7 +6,7 @@ secretfile = json.load(open('line_bot_secret_key.json','r',encoding='utf-8'))
 line_bot_api = LineBotApi(secretfile.get('channel_access_token'))
 def run():
     rich_menu_array = ['rich_menu_main','rich_menu_button_1','rich_menu_button_2','rich_menu_control','rich_menu_control_1']
-    for i in range(1,12):
+    for i in range(1,13):
         c = 'rich_menu_{}'.format(i)
         rich_menu_array.append(c)
 
@@ -24,7 +24,7 @@ def run():
         print('圖片上傳結果')
         print(set_image_response)
 
-run()
+# run()
 
 # rich_menu_list = line_bot_api.get_rich_menu_list()
 # for rich_menu in rich_menu_list:

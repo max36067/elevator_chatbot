@@ -1,0 +1,25 @@
+[
+    {
+        "type": "image",
+        "originalContentUrl": "https://imgur.com/XF00rSL.jpg",
+        "previewImageUrl": "https://imgur.com/XF00rSL.jpg",
+        "animated": false
+      }
+    ,
+    {
+    "type": "text",
+    "text": "女性突然看向你的方向並且毫無支撐的直接倒下，\n接著你聽到悉蘇悉蘇、這樣令人厭惡的聲音；同時女性的腹部裂開，無數的「某種蟲」從那裏湧出\n「某種蟲」就好像是蜘蛛，卻能分辨出是完全跟蜘蛛不一樣的「東西」，從腹部湧出的那些無數的小東西，向你襲擊了過來...",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "game over",
+                    "data": "text=template"
+                    }
+                }
+            ]
+    }
+}
+]

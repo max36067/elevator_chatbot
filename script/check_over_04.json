@@ -1,0 +1,18 @@
+[
+    {
+    "type": "text",
+    "text": "你發現了這個事實後不由得的顫慄，希望自己趕快離開這裡...",
+    "quickReply": {
+            "items": [
+                {
+                "type": "action",
+                "action": {
+                    "type": "postback",
+                    "label": "繼續調查",
+                    "data": "menu=rich_menu_1"
+                    }
+                }
+            ]
+        }
+    }
+]

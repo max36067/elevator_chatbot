@@ -247,19 +247,11 @@ def process_postback_event(event):
     elif 'end' in query_postback_dict:
         end_message_local = "script/{}.json".format(query_postback_dict.get('end')[0])
         end_message_array = detect_json(end_message_local)
-        with open('cb/button.json','r') as it:
-            get_button = json.load(it)
-            if get_button[event.source.user_id]['button'] == "true":
-                line_bot_api.reply_message(
+        line_bot_api.unlink_rich_menu_from_user(event.source.user_id)
+        line_bot_api.reply_message(
                 event.reply_token,
                 end_message_array
                 )
-            else:
-                line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="沒有甚麼反應..."
-                ))
-        #TODO:想想怎麼串接_rich_menu_ctrl_1
         
 if __name__ =='__main__':
     port = int(os.environ.get("PORT",5000))

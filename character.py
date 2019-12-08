@@ -82,7 +82,7 @@ def floor_move(user_id,count_number):
         line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向下移動。"))
     elif count_number == 55:
         line_bot_api.push_message( user_id, TextSendMessage(text="電梯開始移動了..貌似是向下移動。"))
-    elif count_number == 10:
+    elif count_number == 63:
         line_bot_api.push_message( user_id, 
         TextSendMessage(text="電梯開始移動了..貌似是向上移動。")
         )

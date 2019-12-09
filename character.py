@@ -98,7 +98,7 @@ def floor_move(user_id,count_number):
             )
         with open('cb/sign.json','r') as f:
             sign_check = json.load(f)
-        if sign_check == "true":
+        if sign_check[user_id]['sign'] == "true":
             line_bot_api.push_message( user_id,
             TextSendMessage(text="電梯停在了十樓，電梯門輕巧的打開，在你眼前的，是不曾在現實中看過、無盡的黑暗\n無關你自己的意志、你就這樣走出了電梯...\n這之後會發生什麼，就無法得知了...",quick_reply=con_QRB)
             )

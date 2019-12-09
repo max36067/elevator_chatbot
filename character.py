@@ -37,7 +37,7 @@ def count(user_id,count_times):
     if 18 > count_times >= 0:
         linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_2/rich_menu_id", 'r').read()
         line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
-    # 二
+    #二
     elif 26 > count_times >= 18:
         linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_3/rich_menu_id", 'r').read()
         line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
@@ -135,6 +135,7 @@ def floor_move(user_id,count_number):
                 )
             ]
         )
+        line_bot_api.unlink_rich_menu_from_user(user_id)
         line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上五樓的燈亮了起來",quick_reply=ghost_come))
     elif count_number == 50:
         line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上一樓的燈亮了起來"))

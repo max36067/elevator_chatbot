@@ -69,7 +69,7 @@
         "action": {
           "type": "postback",
           "text": "回去調查其他東西",
-          "data": "menu=rich_menu_1"
+          "data": "menu=rich_menu_10"
         }
       }
     ]

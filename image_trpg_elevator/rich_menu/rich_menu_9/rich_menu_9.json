@@ -29,7 +29,7 @@
       },
       "action": {
         "type": "postback",
-        "data": "menu=rich_menu_7"
+        "data": "menu=rich_menu_11"
       }
     }
   ]

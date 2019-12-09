@@ -64,7 +64,7 @@ def count(user_id,count_times):
         
     # 一
     elif count_times >= 58:
-        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_10/rich_menu_id", 'r').read()
+        linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_9/rich_menu_id", 'r').read()
         line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
 
 

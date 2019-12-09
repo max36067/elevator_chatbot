@@ -98,26 +98,26 @@ def floor_move(user_id,count_number):
             )
         with open('cb/sign.json','r') as f:
             sign_check = json.load(f)
-        if sign_check[user_id]['sign'] == "true":
-            line_bot_api.push_message( user_id,
-            TextSendMessage(text="電梯停在了十樓，電梯門輕巧的打開，在你眼前的，是不曾在現實中看過、無盡的黑暗\n無關你自己的意志、你就這樣走出了電梯...\n這之後會發生什麼，就無法得知了...",quick_reply=con_QRB)
-            )
-        else:
-            time.sleep(3)
-            line_bot_api.push_message( user_id,
-            TextSendMessage(text="但是電梯沒在十樓停下，電梯再度往上移動....\n接著，「空－」的一聲，樓層顯示中的「地獄」、「天堂」的樓層燈亮起來了\n瞬間，探索者(你)感覺身體似乎浮了起來\n接著，探索者(你)沒了知覺....")
-            )
-            linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_12/rich_menu_id", 'r').read()
-            line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
-            line_bot_api.push_message(
-                user_id,
-                VideoSendMessage(original_content_url="https://imgur.com/oxBHMzG.mp4",
-                preview_image_url="https://memeprod.s3.ap-northeast-1.amazonaws.com/user-wtf/1573911645133.jpg")
-            )
-            time.sleep(5)
-            line_bot_api.unlink_rich_menu_from_user(user_id)
-            line_bot_api.push_message( user_id,
-            TextSendMessage(text="當天晚上，新聞播報了電梯墜落事故，死者數名的消息.....",quick_reply=con_QRB))
+            if sign_check[user_id]['sign'] == "true":
+                line_bot_api.push_message( user_id,
+                TextSendMessage(text="電梯停在了十樓，電梯門輕巧的打開，在你眼前的，是不曾在現實中看過、無盡的黑暗\n無關你自己的意志、你就這樣走出了電梯...\n這之後會發生什麼，就無法得知了...",quick_reply=con_QRB)
+                )
+            else:
+                time.sleep(3)
+                line_bot_api.push_message( user_id,
+                TextSendMessage(text="但是電梯沒在十樓停下，電梯再度往上移動....\n接著，「空－」的一聲，樓層顯示中的「地獄」、「天堂」的樓層燈亮起來了\n瞬間，探索者(你)感覺身體似乎浮了起來\n接著，探索者(你)沒了知覺....")
+                )
+                linkRichMenuId = open("image_trpg_elevator/rich_menu/rich_menu_12/rich_menu_id", 'r').read()
+                line_bot_api.link_rich_menu_to_user(user_id,linkRichMenuId)
+                line_bot_api.push_message(
+                    user_id,
+                    VideoSendMessage(original_content_url="https://imgur.com/oxBHMzG.mp4",
+                    preview_image_url="https://memeprod.s3.ap-northeast-1.amazonaws.com/user-wtf/1573911645133.jpg")
+                )
+                time.sleep(5)
+                line_bot_api.unlink_rich_menu_from_user(user_id)
+                line_bot_api.push_message( user_id,
+                TextSendMessage(text="當天晚上，新聞播報了電梯墜落事故，死者數名的消息.....",quick_reply=con_QRB))
         
     elif count_number == 18:
         line_bot_api.push_message( user_id, TextSendMessage(text="電梯停下了，面板上六樓的燈亮了起來"))
